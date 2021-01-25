@@ -1,0 +1,7 @@
+<h1>Upgrade requests to process</h1>
+
+<ul>
+{% for req in requests %}
+    <li><a href="req/{{req.id}}">{{req}}</a></li>
+{% endfor %}
+</ul>

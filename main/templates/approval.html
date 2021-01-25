@@ -1,0 +1,45 @@
+<style>
+    body {
+        padding: 0px;
+        margin: 0px;
+    }
+    .messages {
+        padding: 0px;
+    }
+    .messages li {
+        list-style: none;
+        padding: 2em;
+    }
+    .messages .error {
+        width: 100%;
+        background-color: #ffd8d8;
+    }
+</style>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}❌ {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div style="padding: 1em">
+    <h1><span style="font-weight: normal">{{ req.get_status_display }}</span> Upgrade Request</h1>
+
+    <h2 style="font-weight: normal; ">Customer: <i>{{ req.customer }}</i></h2>
+
+    <p><strong>Note from the customer: </strong>{{ req.description }}</p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="id_note_by_approver"><strong>Note by approver:</strong></label><br>
+        {{ form.note_by_approver }}
+        <br>
+        <input type="submit" name="action" value="Approve" style="background-color: #7df96b; padding: 1em;"{% if req.approval_blocked_by %} disabled{% endif %}>
+        <input type="submit" name="action" value="Reject" style="background-color: #f96b6b; padding: 1em;"{% if req.approval_blocked_by %} disabled{% endif %}>
+    </form>
+</div>

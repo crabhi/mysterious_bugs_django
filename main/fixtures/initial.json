@@ -1,0 +1,36 @@
+[
+  {
+    "model": "main.customer",
+    "pk": 1,
+    "fields": {
+      "name": "Johny Dee",
+      "status": "S"
+    }
+  },
+  {
+    "model": "main.customer",
+    "pk": 2,
+    "fields": {
+      "name": "Max Ringel",
+      "status": "P"
+    }
+  },
+  {
+    "model": "main.customer",
+    "pk": 3,
+    "fields": {
+      "name": "Ronny Milhausen",
+      "status": "S"
+    }
+  },
+  {
+    "model": "main.upgraderequest",
+    "pk": 1,
+    "fields": {
+      "description": "Please allow me into the premium club!",
+      "status": "N",
+      "customer": 3,
+      "note_by_approver": "I agree"
+    }
+  }
+]
