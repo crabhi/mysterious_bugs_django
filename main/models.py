@@ -24,7 +24,7 @@ class UpgradeRequest(models.Model):
     description = models.TextField()
     status = models.CharField(max_length=2, choices=STATUS_CHOICES)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    note_by_approver = models.TextField()
+    note_by_approver = models.TextField(blank=True)
 
     @property
     def approval_blocked_by(self):
