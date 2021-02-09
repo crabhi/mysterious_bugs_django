@@ -34,9 +34,9 @@ class RequestApproval(View):
         if form.is_valid():
             form.save()
             if form.cleaned_data['action'] == 'Approve':
-                self._approve(request, req_id)
+                upgrade_request = self._approve(request, req_id)
             else:
-                self._reject(request, upgrade_request)
+                upgrade_request = self._reject(request, upgrade_request)
         else:
             messages.error(request, 'Invalid input')
 
@@ -63,3 +63,4 @@ class RequestApproval(View):
         upgrade_request.customer.status = 'P'
         upgrade_request.customer.save()
         upgrade_request.save()
+        return upgrade_request
